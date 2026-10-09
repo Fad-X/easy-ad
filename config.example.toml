@@ -1,0 +1,41 @@
+# easy-ad example configuration
+# Use with: easy-ad --config config.example.toml
+# Command-line flags always take precedence over values in this file.
+
+# --- Required ---
+target = "192.168.1.0/24"        # IP, comma-separated IPs, CIDR, or hostname
+domain = "corp.local"
+
+# --- Authentication (pick one) ---
+username = "svc_recon"
+password = "P@ssw0rd!"
+# hash = "aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0"
+kerberos = false
+
+# --- Domain Controller (auto-discovered via DNS SRV if omitted) ---
+dc = "192.168.1.10"
+
+# --- BloodHound CE collection ---
+bloodhound = true
+# bh-output = "./bh-data"
+
+# --- Checks: set all_checks = true, or pick individually ---
+all_checks = true
+# kerberoast = true
+# asreproast = true
+# pre2k = true
+# coerce = true
+# gmsa = true
+# shares = true
+# winrm = true
+# rdp = true
+# mssql = true
+
+# --- Output ---
+output = "./easy-ad-output"
+format = "both"                  # json | pdf | both
+threads = 10
+timeout = 10
+include_hashes = false           # include raw hashes in the PDF report
+verbose = false
+no-nxc-install = false           # set true to disable the NetExec auto-install prompt

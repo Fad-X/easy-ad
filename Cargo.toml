@@ -1,0 +1,36 @@
+[package]
+name = "easy-ad"
+version = "0.1.0"
+edition = "2021"
+description = "Fast, automated Active Directory enumeration and attack-path scanner"
+license = "MIT"
+readme = "README.md"
+repository = "https://example.invalid/easy-ad"
+keywords = ["activedirectory", "pentest", "redteam", "ldap", "bloodhound"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["compat"] }
+futures = "0.3"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ldap3 = "0.12"
+ipnet = "2"
+hickory-resolver = { version = "0.26", features = ["tokio", "system-config"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+chrono = { version = "0.4", default-features = false, features = ["clock", "std", "serde"] }
+anyhow = "1"
+thiserror = "2"
+smb = "0.12"
+winrm-rs = "1"
+tiberius = { version = "0.13", default-features = false, features = ["tokio", "rustls", "winauth"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+toml = "0.9"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
